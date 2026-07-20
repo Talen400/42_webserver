@@ -33,7 +33,7 @@ Cliente → Servidor → fork() + execve() → Script CGI
 6. Encaminha resposta ao cliente (possivelmente ajustando headers).
 
 > [!note]- 🔍 Aprofundando: regras de comunicação
-> - **Requisições multipart:** o servidor precisa desagrupar antes de enviar ao CGI. ✅ `Fonte: subject Webserv 42, IV.3`
+> - **Requisições chunked (`Transfer-Encoding: chunked`):** o servidor precisa desagrupar (de-chunk) os dados antes de enviar ao CGI — o CGI não entende chunked, espera o corpo completo seguido de EOF. ✅ `Fonte: subject Webserv 42, IV.3`
 > - **EOF como final:** CGI espera EOF para saber que o corpo terminou. O servidor fecha o pipe de escrita. ✅ `Fonte: subject Webserv 42, IV.3`
 > - **Saída do CGI:** Se não houver Content-Length, EOF marca o fim. ✅ `Fonte: subject Webserv 42, IV.3`
 > - **Diretório correto:** O CGI deve ser executado no diretório correto para acesso a caminhos relativos. ✅ `Fonte: subject Webserv 42, IV.3`
@@ -47,6 +47,7 @@ Cliente → Servidor → fork() + execve() → Script CGI
 - O subject não especifica qual versão de CGI (RFC 3875).
 - FastCGI (versão melhorada do CGI) não é mencionado.
 - Apenas um CGI é exigido, mas suportar múltiplos é uma extensão natural.
+- **Bônus (Cap. VI):** Cookies/sessão e múltiplos CGIs são bônus. ⚠️ A parte bônus **só é avaliada se a obrigatória estiver 100% funcional sem problemas**. ✅ `Fonte: subject Webserv 42, VI`
 
 ## Perguntas de autoavaliação
 - Como o servidor sabe que um arquivo deve ser executado como CGI vs servido estaticamente?

@@ -86,6 +86,10 @@ Diferenças de plataforma relevantes.
 - [[fcntl-macos]] — fcntl(), O_NONBLOCK, FD_CLOEXEC
 - [[non-blocking-macos]] — ⭐ Non-blocking no macOS
 
+## 08 — Funções Autorizadas
+
+- [[funcoes-autorizadas]] — Lista fechada de funções do Cap. IV
+
 ## 09 — Testes e Ferramentas
 
 - [[test-strategies]] — ⭐ Telnet, curl, Python, stress test
@@ -93,6 +97,11 @@ Diferenças de plataforma relevantes.
 ## 10 — C++98 Específico
 
 - [[memory-management]] — ⭐ RAII, containers, evitar vazamentos
+
+## 11 — Entrega do Projeto
+
+- [[readme-checklist]] — Requisitos do README.md (Cap. V)
+- [[avaliacao-por-pares]] — O que esperar na defesa (Cap. VII)
 
 ---
 

@@ -16,13 +16,13 @@ O subject exige C++98 e proíbe bibliotecas externas (inclusive Boost). ✅ `Fon
 ### Containers STL como gerenciadores de memória
 A regra de ouro: **prefira containers STL a `new[]`/`delete[]` explícitos.**
 
-| Container | Uso no Webserv |
-|-----------|---------------|
-| `std::string` | Buffer de parsing, headers, paths |
-| `std::vector<char>` | Buffer binário para corpo de requisição/resposta |
-| `std::map<std::string, std::string>` | Headers (chave → valor) |
-| `std::list` / `std::vector<Client>` | Pool de clientes conectados |
-| `std::pair` | Pares de dados diversos |
+| Container                            | Uso no Webserv                                   |
+| ------------------------------------ | ------------------------------------------------ |
+| `std::string`                        | Buffer de parsing, headers, paths                |
+| `std::vector<char>`                  | Buffer binário para corpo de requisição/resposta |
+| `std::map<std::string, std::string>` | Headers (chave → valor)                          |
+| `std::list` / `std::vector<Client>`  | Pool de clientes conectados                      |
+| `std::pair`                          | Pares de dados diversos                          |
 
 ### auto_ptr — use com extrema cautela
 `std::auto_ptr` transfere posse na cópia (não é cópia real). Isso causa bugs sutis:

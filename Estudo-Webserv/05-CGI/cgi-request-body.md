@@ -32,18 +32,17 @@ Servidor                          CGI
 3. Servidor escreve o corpo da requisição no pipe.
 4. Servidor fecha o pipe (EOF).
 
-> [!note]- 🔍 Aprofundando: multipart
-> Se a requisição for `multipart/form-data` (upload de arquivo via formulário), o servidor precisa:
-> 1. Parsear o boundary do header Content-Type.
-> 2. Separar cada parte do corpo.
-> 3. Passar cada parte individualmente ou o corpo completo para o CGI.
+> [!note]- 🔍 Aprofundando: chunked vs multipart — não confundir
+> **Chunked Transfer Encoding** (`Transfer-Encoding: chunked`) é uma forma de o cliente enviar o corpo em pedaços sem saber o tamanho total. O servidor **deve** desagrupar (de-chunk) esses dados antes de passar ao CGI, porque o CGI espera o corpo completo seguido de EOF. ✅ `Fonte: subject Webserv 42, IV.3`
 >
-> O subject não especifica se o CGI recebe o multipart bruto ou já processado. ⚠️ não verificado
+> **Multipart/form-data** (`Content-Type: multipart/form-data; boundary=---`) é um formato de corpo com várias partes separadas por um boundary. O CGI recebe o multipart **já de-chunked** (se veio chunked pela rede) — o servidor primeiro resolve o chunked, depois entrega o corpo resultante (que pode ser multipart) para o CGI. O CGI é quem parseia o multipart, não o servidor (a menos que o upload seja para salvar arquivo no disco, não via CGI).
 >
 > **Conexões:**
 > - `Complemento:` [[cgi-overview]]
 > - `Complemento:` [[file-upload]]
 > - `Complemento:` [[cgi-response]]
+> - `Complemento:` [[chunked-transfer-encoding]]
+> - `Complemento:` [[multipart-form-data]]
 
 ## O que o subject NÃO exige (mas é bom saber)
 - O subject não especifica o tamanho do buffer para escrever no pipe. ⚠️ não verificado

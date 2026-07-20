@@ -51,16 +51,16 @@ Para cada `listen` no config:
 
 ### 6. Ação: decidir o que fazer
 
-| Condição | Ação | Próximo passo |
-|----------|------|---------------|
-| Diretiva `return` no location | Redirect | Montar resposta 301/302 |
-| Extensão `.php/.py` e `cgi_ext` | CGI | fork + execve |
-| POST com `upload_store` | Upload | Salvar arquivo |
-| DELETE | Remover | `unlink()` |
-| GET em diretório + index file | Servir index | Ler e enviar |
-| GET em diretório + autoindex on | Listar dir | Gerar HTML |
-| GET em diretório + autoindex off | 403 | Página de erro |
-| GET/POST em arquivo estático | Servir estático | Ler e enviar |
+| Condição                         | Ação            | Próximo passo           |
+| -------------------------------- | --------------- | ----------------------- |
+| Diretiva `return` no location    | Redirect        | Montar resposta 301/302 |
+| Extensão `.php/.py` e `cgi_ext`  | CGI             | fork + execve           |
+| POST com `upload_store`          | Upload          | Salvar arquivo          |
+| DELETE                           | Remover         | `unlink()`              |
+| GET em diretório + index file    | Servir index    | Ler e enviar            |
+| GET em diretório + autoindex on  | Listar dir      | Gerar HTML              |
+| GET em diretório + autoindex off | 403             | Página de erro          |
+| GET/POST em arquivo estático     | Servir estático | Ler e enviar            |
 
 **Notas relacionadas:** [[redirecionamento]], [[cgi-overview]], [[file-upload]], [[static-file-serving]], [[directory-listing]], [[default-file]]
 
